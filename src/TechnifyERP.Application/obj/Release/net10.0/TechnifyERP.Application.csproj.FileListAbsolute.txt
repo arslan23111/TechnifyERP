@@ -1,0 +1,15 @@
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\bin\Release\net10.0\TechnifyERP.Application.deps.json
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\bin\Release\net10.0\TechnifyERP.Application.dll
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\bin\Release\net10.0\TechnifyERP.Application.pdb
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\bin\Release\net10.0\TechnifyERP.Domain.dll
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\bin\Release\net10.0\TechnifyERP.Domain.pdb
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\obj\Release\net10.0\TechnifyERP.Application.csproj.AssemblyReference.cache
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\obj\Release\net10.0\TechnifyERP.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\obj\Release\net10.0\TechnifyERP.Application.AssemblyInfoInputs.cache
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\obj\Release\net10.0\TechnifyERP.Application.AssemblyInfo.cs
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\obj\Release\net10.0\TechnifyERP.Application.csproj.CoreCompileInputs.cache
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\obj\Release\net10.0\Technify.EAE0F3DC.Up2Date
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\obj\Release\net10.0\TechnifyERP.Application.dll
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\obj\Release\net10.0\refint\TechnifyERP.Application.dll
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\obj\Release\net10.0\TechnifyERP.Application.pdb
+C:\Users\Ali Pathan\Documents\Codex\2026-08-25\chatgpt\TechnifyERP\src\TechnifyERP.Application\obj\Release\net10.0\ref\TechnifyERP.Application.dll

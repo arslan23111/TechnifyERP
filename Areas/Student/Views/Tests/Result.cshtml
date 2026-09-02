@@ -1,0 +1,2 @@
+@model TechnifyERP.Application.Tests.TestResultDto
+@{ViewData["Title"]="Test Result";}<div class="card border-0 shadow-sm text-center"><div class="card-body p-5"><h1>@Model.TestTitle</h1><h2 class="display-4 text-primary">@Model.Percentage.ToString("0.##")%</h2><p class="h4">Score: @Model.Score / @Model.TotalMarks</p><a asp-action="Index" class="btn btn-primary">Back to Tests</a></div></div>

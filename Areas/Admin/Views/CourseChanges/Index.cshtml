@@ -1,0 +1,58 @@
+@model IReadOnlyList<TechnifyERP.Application.CourseChanges.CourseChangeDto>
+@{
+    ViewData["Title"] = "Course Changes";
+}
+<h1 class="h2">Course Change Requests</h1>
+<p class="text-secondary">Approving a request closes the previous enrollment and creates a fee record for the new course.</p>
+@if (TempData["SuccessMessage"] is string s)
+{
+    <div class="alert alert-success">@s</div>
+}
+@if (TempData["ErrorMessage"] is
+string e)
+{
+    <div class="alert alert-danger">@e</div>
+}
+<div class="card border-0 shadow-sm">
+    <div class="table-responsive">
+        <table class="table align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Change</th>
+                    <th>Fee Difference</th>
+                    <th>Reason</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>@foreach(var x in Model){
+                <tr>
+                    <td>@x.StudentName<br /><small>@x.RegistrationNumber</small></td>
+                    <td>@x.FromCourseCode → @x.ToCourseCode</td>
+                    <td>Rs. @((x.ToFee - x.FromFee).ToString("N2"))</td>
+                    <td>@x.Reason</td>
+                    <td>@if(x.Status==TechnifyERP.Domain.Enums.CourseChangeStatus.Pending){
+                        <form asp-action="Review"
+                              method="post" class="d-flex gap-1"><input type="hidden" name="id" value="@x.Id" /><input
+                            name="remarks" class="form-control form-control-sm" placeholder="Remarks" /><button
+                            name="approve" value="true" class="btn btn-success btn-sm">Approve</button><button
+                            name="approve" value="false" class="btn btn-outline-danger btn-sm">Reject</button>
+                        </form>
+                    }else
+                    {
+
+                        <span class="badge text-bg-secondary">@x.Status</span>
+                    }
+                </td>
+            </tr>
+        }
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="5" class="text-center py-4">No requests.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>

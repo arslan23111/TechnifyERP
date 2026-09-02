@@ -1,0 +1,18 @@
+@model IReadOnlyList<TechnifyERP.Application.Admin.FacultyListItemDto>
+@{
+    ViewData["Title"] = "Faculty";
+}
+
+<div class="mb-4"><h1 class="h2 mb-1">Faculty</h1><p class="text-secondary mb-0">Faculty profiles, departments aur account status dekhein.</p></div>
+<div class="card border-0 shadow-sm"><div class="table-responsive"><table class="table table-hover align-middle mb-0">
+    <thead class="table-light"><tr><th>Employee Code</th><th>Faculty</th><th>Designation</th><th>Department</th><th>Status</th><th class="text-end">Action</th></tr></thead>
+    <tbody>
+    @if (Model.Count == 0) { <tr><td colspan="6" class="text-center text-secondary py-5">No faculty found.</td></tr> }
+    else { @foreach (var faculty in Model) { <tr>
+        <td><span class="badge text-bg-light border">@(faculty.EmployeeCode ?? "Pending")</span></td>
+        <td><strong>@faculty.FullName</strong><br /><small class="text-secondary">@faculty.Email</small></td>
+        <td>@(faculty.Designation ?? "—")</td><td>@(faculty.Department ?? "—")</td><td>@faculty.AccountStatus</td>
+        <td class="text-end"><a asp-action="Details" asp-route-id="@faculty.UserId" class="btn btn-sm btn-outline-primary">View</a></td>
+    </tr> } }
+    </tbody>
+</table></div></div>

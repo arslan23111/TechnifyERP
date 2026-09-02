@@ -1,0 +1,79 @@
+@model TechnifyERP.ViewModels.Faculty.AttendancePageViewModel
+@using TechnifyERP.Domain.Enums
+@{
+    ViewData["Title"] = "Mark Attendance";
+}
+
+<div class="mb-4"><h1 class="h2 mb-1">Mark Attendance</h1><p class="text-secondary mb-0">Select an assigned course and date to record student attendance.</p></div>
+
+@if (TempData["SuccessMessage"] is string success) { <div class="alert alert-success">@success</div> }
+@if (TempData["ErrorMessage"] is string error) { <div class="alert alert-danger">@error</div> }
+
+<div class="card border-0 shadow-sm mb-4"><div class="card-body p-4">
+    <form method="get" class="row g-3 align-items-end">
+        <div class="col-md-6"><label asp-for="CourseId" class="form-label">Course</label><select asp-for="CourseId" asp-items="Model.Courses" class="form-select"><option value="0">Select assigned course</option></select></div>
+        <div class="col-md-4"><label asp-for="AttendanceDate" class="form-label">Attendance Date</label><input asp-for="AttendanceDate" class="form-control" /></div>
+        <div class="col-md-2"><button class="btn btn-primary w-100">Load Students</button></div>
+    </form>
+</div></div>
+
+@if (Model.SheetLoaded)
+{
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+        <div><span class="badge text-bg-primary">@Model.CourseCode</span><h2 class="h4 mt-2 mb-0">@Model.CourseName</h2></div>
+        <div class="d-flex gap-2">
+            <span class="badge text-bg-success p-2">Present: <span id="presentCount">0</span></span>
+            <span class="badge text-bg-danger p-2">Absent: <span id="absentCount">0</span></span>
+            <span class="badge text-bg-warning p-2">Leave: <span id="leaveCount">0</span></span>
+        </div>
+    </div>
+
+    <form asp-action="Save" method="post">
+        <input asp-for="CourseId" type="hidden" />
+        <input asp-for="AttendanceDate" type="hidden" />
+        <div class="card border-0 shadow-sm"><div class="table-responsive"><table class="table align-middle mb-0">
+            <thead class="table-light"><tr><th>Registration No.</th><th>Student</th><th>Attendance Status</th></tr></thead>
+            <tbody>
+            @if (Model.Items.Count == 0) { <tr><td colspan="3" class="text-center text-secondary py-5">No approved students enrolled in this course.</td></tr> }
+            else
+            {
+                @for (var i = 0; i < Model.Items.Count; i++)
+                {
+                    <tr>
+                        <td>@(Model.Items[i].RegistrationNumber ?? "—")</td><td class="fw-semibold">@Model.Items[i].FullName</td>
+                        <td>
+                            <input asp-for="Items[i].StudentUserId" type="hidden" />
+                            <input asp-for="Items[i].FullName" type="hidden" />
+                            <div class="btn-group status-group" role="group">
+                                <input type="radio" class="btn-check attendance-radio" name="Items[@i].Status" id="present-@i" value="@((int)AttendanceStatus.Present)" checked="@(Model.Items[i].Status == AttendanceStatus.Present)" />
+                                <label class="btn btn-outline-success" for="present-@i">Present</label>
+                                <input type="radio" class="btn-check attendance-radio" name="Items[@i].Status" id="absent-@i" value="@((int)AttendanceStatus.Absent)" checked="@(Model.Items[i].Status == AttendanceStatus.Absent)" />
+                                <label class="btn btn-outline-danger" for="absent-@i">Absent</label>
+                                <input type="radio" class="btn-check attendance-radio" name="Items[@i].Status" id="leave-@i" value="@((int)AttendanceStatus.Leave)" checked="@(Model.Items[i].Status == AttendanceStatus.Leave)" />
+                                <label class="btn btn-outline-warning" for="leave-@i">Leave</label>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table></div></div>
+        @if (Model.Items.Count > 0) { <button class="btn btn-primary mt-3">Save Attendance</button> }
+    </form>
+}
+
+@section Scripts {
+<script>
+    (() => {
+        const radios = document.querySelectorAll('.attendance-radio');
+        const updateSummary = () => {
+            const checked = [...radios].filter(item => item.checked);
+            document.getElementById('presentCount').textContent = checked.filter(item => item.value === '1').length;
+            document.getElementById('absentCount').textContent = checked.filter(item => item.value === '2').length;
+            document.getElementById('leaveCount').textContent = checked.filter(item => item.value === '3').length;
+        };
+        radios.forEach(item => item.addEventListener('change', updateSummary));
+        updateSummary();
+    })();
+</script>
+}

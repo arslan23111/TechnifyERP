@@ -1,0 +1,43 @@
+@using TechnifyERP.Application.Messages
+@model IReadOnlyList<MessageDto>
+@{
+    var sent = (IReadOnlyList<MessageDto>)ViewBag.Sent; ViewData["Title"] = "Messages";
+}
+<h1 class="h2">Private Messages</h1>
+<p class="text-secondary">Send a direct message to an available contact.</p>
+<div class="row g-4">
+    <div class="col-lg-5">
+        <form asp-action="Send" method="post" class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h2 class="h5">New Message</h2><select name="recipientId" asp-items="ViewBag.Contacts"
+                                                   class="form-select mb-2">
+                <option value="">Select recipient</option>
+            </select><input name="subject" maxlength="200" class="form-control mb-2" placeholder="Subject"
+                            required /><textarea name="body" maxlength="4000" rows="6" class="form-control mb-2"
+                                 placeholder="Message" required></textarea><button class="btn btn-primary">Send</button>
+        </div>
+    </form>
+</div>
+<div class="col-lg-7">
+    <h2 class="h5">Inbox</h2>@foreach(var x in Model){
+    <a asp-action="Read" asp-route-id="@x.Id"
+       class="card text-decoration-none text-dark mb-2 border-0 shadow-sm">
+        <div class="card-body"><strong>@x.SenderName</strong><span
+            class="float-end small">@x.SentAtUtc.ToLocalTime().ToString("dd MMM HH:mm")</span>
+            <div>@x.Subject</div><small class="text-secondary">@(x.ReadAtUtc is null ? "Unread" : "Read")</small>
+        </div>
+    </a>
+}
+@if (Model.Count == 0)
+{
+    <div class="alert alert-info">Your inbox is empty.</div>
+}
+<h2 class="h5 mt-4">Sent</h2>
+@foreach (var x in sent.Take(5))
+{
+    <div class="card mb-2">
+        <div class="card-body py-2"><strong>To @x.RecipientName:</strong> @x.Subject</div>
+    </div>
+}
+</div>
+</div>

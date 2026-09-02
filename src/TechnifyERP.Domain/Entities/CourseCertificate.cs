@@ -1,0 +1,2 @@
+namespace TechnifyERP.Domain.Entities;
+public sealed class CourseCertificate { public int Id{get;set;} public string CertificateCode{get;set;}=string.Empty; public string StudentUserId{get;set;}=string.Empty; public int CourseId{get;set;} public string IssuedByUserId{get;set;}=string.Empty; public DateOnly IssueDate{get;set;} public DateTime CreatedAtUtc{get;set;}=DateTime.UtcNow; public Course Course{get;set;}=null!; }

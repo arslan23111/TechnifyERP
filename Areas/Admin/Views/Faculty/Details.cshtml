@@ -1,0 +1,20 @@
+@model TechnifyERP.Application.Admin.FacultyDetailsDto
+@{
+    ViewData["Title"] = "Faculty Details";
+}
+
+<div class="d-flex justify-content-between align-items-start mb-4">
+    <div><span class="badge text-bg-primary mb-2">@(Model.EmployeeCode ?? "Pending")</span><h1 class="h2 mb-1">@Model.FullName</h1><p class="text-secondary mb-0">@Model.Email</p></div>
+    <a asp-action="Index" class="btn btn-outline-secondary">Back</a>
+</div>
+<div class="card border-0 shadow-sm"><div class="card-body p-4"><div class="row"><div class="col-md-6"><dl class="row mb-0">
+    <dt class="col-5">Designation</dt><dd class="col-7">@(Model.Designation ?? "—")</dd>
+    <dt class="col-5">Department</dt><dd class="col-7">@(Model.Department ?? "—")</dd>
+    <dt class="col-5">Joining Date</dt><dd class="col-7">@(Model.JoiningDate?.ToString("dd MMM yyyy") ?? "—")</dd>
+    <dt class="col-5">Status</dt><dd class="col-7">@Model.AccountStatus</dd>
+</dl></div><div class="col-md-6"><dl class="row mb-0">
+    <dt class="col-5">Phone</dt><dd class="col-7">@(Model.PhoneNumber ?? "—")</dd>
+    <dt class="col-5">CNIC</dt><dd class="col-7">@(Model.Cnic ?? "—")</dd>
+    <dt class="col-5">Gender</dt><dd class="col-7">@(Model.Gender ?? "—")</dd>
+    <dt class="col-5">Address</dt><dd class="col-7">@(Model.Address ?? "—")</dd>
+</dl></div></div></div></div>

@@ -1,0 +1,14 @@
+@model IReadOnlyList<FacultyStudentDto>
+@{
+    var course = (FacultyCourseDto)ViewBag.Course;
+    ViewData["Title"] = "Enrolled Students";
+}
+
+<div class="d-flex justify-content-between align-items-start mb-4"><div><span class="badge text-bg-primary mb-2">@course.CourseCode</span><h1 class="h2 mb-1">@course.CourseName</h1><p class="text-secondary mb-0">Approved enrolled students</p></div><a asp-action="Index" class="btn btn-outline-secondary">Back</a></div>
+<div class="card border-0 shadow-sm"><div class="table-responsive"><table class="table table-hover align-middle mb-0">
+    <thead class="table-light"><tr><th>Registration No.</th><th>Student</th><th>Email</th><th>Phone</th></tr></thead>
+    <tbody>
+    @if (Model.Count == 0) { <tr><td colspan="4" class="text-center text-secondary py-5">No approved students enrolled.</td></tr> }
+    else { @foreach (var student in Model) { <tr><td>@(student.RegistrationNumber ?? "—")</td><td class="fw-semibold">@student.FullName</td><td>@student.Email</td><td>@(student.PhoneNumber ?? "—")</td></tr> } }
+    </tbody>
+</table></div></div>

@@ -1,0 +1,90 @@
+/* Compact, dashboard-style cards used only on the public homepage. */
+.homepage-stat-grid,
+.homepage-feature-grid {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.compact-stat-card,
+.homepage-feature-card {
+    border: 1px solid #d8e5f5;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(20, 69, 122, 0.07);
+    overflow: hidden;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.compact-stat-card:hover,
+.homepage-feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px rgba(20, 69, 122, 0.12);
+}
+
+.compact-stat-card {
+    min-height: 108px;
+    position: relative;
+}
+
+.compact-stat-card::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    content: "";
+   
+}
+
+.compact-stat-card .card-body {
+    padding: 18px 20px;
+}
+
+.compact-stat-value {
+    color: #1565d8;
+    font-size: 1.7rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+}
+
+.compact-stat-label {
+    margin-top: 5px;
+    color: #5c6f82;
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
+.homepage-feature-card {
+    min-height: 110px;
+}
+
+.homepage-feature-card .card-body {
+    padding: 15px;
+}
+
+.homepage-feature-card h2 {
+    margin: 0 0 8px;
+    color: #102a43;
+    font-size: 1.08rem;
+    font-weight: 750;
+}
+
+.homepage-feature-card p {
+    margin: 0;
+    color: #5c6f82;
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 575.98px) {
+    .compact-stat-card {
+        min-height: 96px;
+    }
+
+    .homepage-feature-card {
+        min-height: 0;
+        
+    }
+}

@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="text-center mb-4">
+    <h1 class="h2">Create an account</h1>
+    <p class="text-secondary">Choose an account type. Registration becomes active after administrator approval.</p>
+</div>
+
+<div class="row g-4 justify-content-center">
+    <div class="col-md-5">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="h4">Student Registration</h2>
+                <p class="text-secondary">Course select karke enrollment request ke saath student account banayein.</p>
+                <a asp-action="RegisterStudent" class="btn btn-primary">Register as Student</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="h4">Faculty Registration</h2>
+                <p class="text-secondary">Submit a faculty account request with your department and designation.</p>
+                <a asp-action="RegisterFaculty" class="btn btn-outline-primary">Register as Faculty</a>
+            </div>
+        </div>
+    </div>
+</div>

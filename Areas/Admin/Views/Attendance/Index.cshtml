@@ -1,0 +1,65 @@
+@model TechnifyERP.Application.Attendance.AdminAttendanceReportDto
+@{
+    ViewData["Title"] = "Attendance Report";
+}
+
+<div class="mb-4">
+    <h1 class="h2 mb-1">Attendance Report</h1>
+    <p class="text-secondary mb-0">Course-wise student attendance summary. Leave records are not included in the percentage.</p>
+</div>
+
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-body p-4">
+        <form method="get" class="row g-3 align-items-end">
+            <div class="col-md-8">
+                <label for="courseId" class="form-label">Course Filter</label>
+                <select id="courseId" name="courseId" class="form-select">
+                    <option value="">All courses</option>
+                    @foreach (var course in Model.Courses)
+                    {
+                        <option value="@course.CourseId" selected="@(Model.SelectedCourseId == course.CourseId)">@course.CourseCode — @course.CourseName</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2"><button class="btn btn-primary w-100">Apply</button></div>
+            <div class="col-md-2"><a asp-action="Index" class="btn btn-outline-secondary w-100">Reset</a></div>
+        </form>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr><th>Course</th><th>Student</th><th>Present</th><th>Absent</th><th>Leave</th><th>Percentage</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+            @if (Model.Rows.Count == 0)
+            {
+                <tr><td colspan="7" class="text-center text-secondary py-5">No approved enrollments found.</td></tr>
+            }
+            else
+            {
+                @foreach (var row in Model.Rows)
+                {
+                    var hasClasses = row.Summary.Present + row.Summary.Absent > 0;
+                    var isLow = hasClasses && row.Summary.Percentage < 75;
+                    <tr>
+                        <td><span class="badge text-bg-primary">@row.CourseCode</span><div class="small mt-1">@row.CourseName</div></td>
+                        <td><div class="fw-semibold">@row.StudentName</div><div class="small text-secondary">@(row.RegistrationNumber ?? "—")</div></td>
+                        <td class="text-success fw-semibold">@row.Summary.Present</td>
+                        <td class="text-danger fw-semibold">@row.Summary.Absent</td>
+                        <td class="text-warning-emphasis fw-semibold">@row.Summary.Leave</td>
+                        <td class="fw-semibold">@(hasClasses ? $"{row.Summary.Percentage:0.##}%" : "—")</td>
+                        <td>
+                            @if (!hasClasses) { <span class="badge text-bg-secondary">Not marked</span> }
+                            else if (isLow) { <span class="badge text-bg-danger">Low — needs @row.Summary.ClassesNeededFor75Percent present</span> }
+                            else { <span class="badge text-bg-success">Good standing</span> }
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

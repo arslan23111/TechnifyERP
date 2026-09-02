@@ -1,0 +1,71 @@
+@model TechnifyERP.Application.Website.HomepageContentDto
+@{
+    ViewData["Title"] = "Home";
+}
+<section class="rounded-4 bg-primary text-white p-3 mb-4 mt-3 shadow-sm">
+    <div class="col-lg-8 py-3">
+        <p class="text-white-50 fw-semibold mb-2">TECHNIFY ERP</p>
+        <h1 class="display-4 fw-bold">@Model.HeroTitle</h1>
+        <p class="lead mt-3 mb-4">@Model.HeroSubtitle</p><a class="btn btn-light btn-lg"
+                                                            href="@(string.IsNullOrWhiteSpace(Model.PrimaryButtonUrl) ? "/" : Model.PrimaryButtonUrl)">@Model.PrimaryButtonText</a>
+    </div>
+</section>
+@if (Model.Stats.Count > 0)
+{
+    <section class="row g-1 mb-3 justify-content-center homepage-stat-grid">
+    @foreach (var stat in Model.Stats)
+    {
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card compact-stat-card h-100">
+                <div class="card-body">
+                    <div class="compact-stat-value">@stat.Value</div>
+                    <div class="compact-stat-label">@stat.Label</div>
+                </div>
+            </div>
+        </div>
+    }
+</section>
+}
+<section class="row g-0 mb-1 justify-content-center homepage-feature-grid">
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="card homepage-feature-card h-100">
+            <div class="card-body">
+                <h2>Learn</h2>
+                <p>Courses, learning materials, assignments, and tests in one place.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="card homepage-feature-card h-100">
+            <div class="card-body">
+                <h2>Track</h2>
+                <p>Keep attendance, fees, grades, and academic progress clearly visible.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="card homepage-feature-card h-100">
+            <div class="card-body">
+                <h2>Achieve</h2>
+                <p>Build your achievements with badges and certificates.</p>
+            </div>
+        </div>
+    </div>
+</section>
+@if (Model.Features.Count > 0)
+{
+    <section class="row g-0 mb-1 justify-content-center homepage-feature-grid">
+    @foreach (var feature in Model.Features)
+    {
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card homepage-feature-card h-100">
+                <div class="card-body">
+                    <h2>@feature.Title</h2>
+                    <p>@feature.Description</p>
+                </div>
+            </div>
+        </div>
+    }
+</section>
+}
+<p class="text-center text-secondary mb-4">@Model.FooterText</p>

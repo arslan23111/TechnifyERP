@@ -1,0 +1,2 @@
+using System.Security.Claims;using Microsoft.AspNetCore.Authorization;using Microsoft.AspNetCore.Mvc;using TechnifyERP.Application.Badges;
+namespace TechnifyERP.Areas.Student.Controllers;[Area("Student"),Authorize(Roles="Student")]public sealed class BadgesController(IBadgeService service):Controller{public async Task<IActionResult>Index(CancellationToken ct)=>View(await service.GetStudentBadgesAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)!,ct));}

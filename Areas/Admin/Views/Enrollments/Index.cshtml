@@ -1,0 +1,20 @@
+@model IReadOnlyList<TechnifyERP.Application.Admin.EnrollmentListItemDto>
+@{
+    ViewData["Title"] = "Enrollments";
+}
+
+<div class="mb-4"><h1 class="h2 mb-1">Course Enrollments</h1><p class="text-secondary mb-0">Review students and their course enrollment statuses.</p></div>
+@if (TempData["SuccessMessage"] is string success) { <div class="alert alert-success">@success</div> }
+@if (TempData["ErrorMessage"] is string error) { <div class="alert alert-danger">@error</div> }
+<div class="card border-0 shadow-sm"><div class="table-responsive"><table class="table table-hover align-middle mb-0">
+    <thead class="table-light"><tr><th>Registration No.</th><th>Student</th><th>Course</th><th>Status</th><th>Requested</th><th>Reviewed</th><th>Action</th></tr></thead>
+    <tbody>
+    @if (Model.Count == 0) { <tr><td colspan="7" class="text-center text-secondary py-5">No enrollments found.</td></tr> }
+    else { @foreach (var enrollment in Model) { <tr>
+        <td>@(enrollment.RegistrationNumber ?? "Pending")</td><td class="fw-semibold">@enrollment.StudentName</td>
+        <td><strong>@enrollment.CourseCode</strong><br /><small>@enrollment.CourseName</small></td><td>@enrollment.Status</td>
+        <td>@enrollment.RequestedAtUtc.ToLocalTime().ToString("dd MMM yyyy")</td><td>@(enrollment.ReviewedAtUtc?.ToLocalTime().ToString("dd MMM yyyy") ?? "—")</td>
+        <td>@if (enrollment.Status == TechnifyERP.Domain.Enums.EnrollmentStatus.Pending) { <form asp-action="Review" method="post" class="d-flex gap-1"><input type="hidden" name="id" value="@enrollment.EnrollmentId" /><button name="approve" value="true" class="btn btn-sm btn-success">Approve</button><button name="approve" value="false" class="btn btn-sm btn-danger">Reject</button></form> }</td>
+    </tr> } }
+    </tbody>
+</table></div></div>

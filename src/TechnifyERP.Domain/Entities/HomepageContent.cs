@@ -1,0 +1,2 @@
+namespace TechnifyERP.Domain.Entities;
+public sealed class HomepageContent { public int Id { get; set; } public string HeroTitle { get; set; } = "Learn. Build. Achieve."; public string HeroSubtitle { get; set; } = "A modern learning platform for students and faculty."; public string PrimaryButtonText { get; set; } = "Get Started"; public string? PrimaryButtonUrl { get; set; } = "/Identity/Account/Register"; public string FooterText { get; set; } = "Empowering learners for the future."; public DateTime UpdatedAtUtc { get; set; } = DateTime.UtcNow; }

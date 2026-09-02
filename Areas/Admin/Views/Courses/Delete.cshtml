@@ -1,0 +1,20 @@
+@model CourseDto
+@{
+    ViewData["Title"] = "Delete Course";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card border-danger shadow-sm">
+            <div class="card-body p-4">
+                <h1 class="h3 text-danger">Delete Course?</h1>
+                <p>Are you sure you want to delete <strong>@Model.CourseCode — @Model.Name</strong>?</p>
+                <p class="text-secondary">Future mein enrollment linked hone par deletion protection add hogi.</p>
+                <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+                    <button type="submit" class="btn btn-danger">Delete Course</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

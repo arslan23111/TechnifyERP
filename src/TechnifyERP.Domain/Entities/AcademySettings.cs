@@ -1,0 +1,2 @@
+namespace TechnifyERP.Domain.Entities;
+public sealed class AcademySettings { public int Id{get;set;} public string AcademyName{get;set;}="Technify ERP"; public string ShortName{get;set;}="TechnifyERP"; public string? Website{get;set;} public string AcademicYear{get;set;}=string.Empty; public string? Email{get;set;} public string? Phone{get;set;} public string? Address{get;set;} public DateTime UpdatedAtUtc{get;set;}=DateTime.UtcNow; }

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-TechnifyERP-83f366b7-4b9a-4ed9-af65-98cbd14316f5</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="src\TechnifyERP.Application\TechnifyERP.Application.csproj" />
+    <ProjectReference Include="src\TechnifyERP.Infrastructure\TechnifyERP.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.11" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="src\**\*.cs" />
+    <Content Remove="src\**\*" />
+    <EmbeddedResource Remove="src\**\*" />
+    <None Remove="src\**\*" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,23 @@
+@model CourseDto
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <span class="badge text-bg-primary mb-3">@Model.CourseCode</span>
+                <h1 class="h3">@Model.Name</h1>
+                <dl class="row mt-4 mb-4">
+                    <dt class="col-sm-5">Credit Hours</dt>
+                    <dd class="col-sm-7">@Model.CreditHours</dd>
+                    <dt class="col-sm-5">Monthly Fee</dt>
+                    <dd class="col-sm-7">Rs. @Model.MonthlyFee.ToString("N2")</dd>
+                </dl>
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+                <a asp-action="Index" class="btn btn-outline-secondary">Back</a>
+            </div>
+        </div>
+    </div>
+</div>

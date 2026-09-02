@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TechnifyERP</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/blue-theme.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/homepage-cards.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TechnifyERP.styles.css" asp-append-version="true" />
+</head>
+
+<body
+    class="@(User.IsInRole("SuperAdmin") ? "role-admin" : User.IsInRole("Faculty") ? "role-faculty" : User.IsInRole("Student") ? "role-student" : "role-public")">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light app-navbar mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TechnifyERP</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                               asp-action="Privacy">Privacy</a>
+                        </li>
+                        @if (User.IsInRole("SuperAdmin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-primary fw-semibold" asp-area="Admin" asp-controller="Dashboard"
+                                   asp-action="Index">Admin Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Courses"
+                                   asp-action="Index">Courses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Students"
+                                   asp-action="Index">Students</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Faculty"
+                                   asp-action="Index">Faculty</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Enrollments"
+                                   asp-action="Index">Enrollments</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Attendance"
+                                   asp-action="Index">Attendance Report</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-area="Admin" asp-controller="Fees"
+                                                        asp-action="Index">Fees</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="Admin" asp-controller="Fees"
+                                                            asp-action="Installments">Installments</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="Admin" asp-controller="Notices"
+                                                                asp-action="Index">Notices</a></li>
+                                        <li class="nav-item"><a class="nav-link text-dark" asp-area="Admin" asp-controller="Schedule"
+                                                                    asp-action="Index">Schedule</a></li>
+                                            <li class="nav-item"><a class="nav-link text-dark" asp-area="Admin" asp-controller="Doubts"
+                                                                        asp-action="Index">Doubts</a></li>
+                                                <li class="nav-item"><a class="nav-link text-dark" asp-area="Admin" asp-controller="Messages"
+                                                                            asp-action="Index">Messages</a></li>
+                                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="Admin" asp-controller="Badges"
+                                                                                asp-action="Index">Badges</a></li>
+                                                        <li class="nav-item"><a class="nav-link text-dark" asp-area="Admin"
+                                                                                    asp-controller="Certificates" asp-action="Index">Certificates</a></li>
+                                                            <li class="nav-item"><a class="nav-link text-dark" asp-area="Admin" asp-controller="Settings"
+                                                                                        asp-action="Index">Settings</a></li>
+                                                                <li class="nav-item"><a class="nav-link text-dark" asp-area="Admin" asp-controller="Website"
+                                                                                            asp-action="Index">Website</a></li>
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link text-dark" asp-area="Admin" asp-controller="Approvals"
+                                                                           asp-action="Index">Approvals</a>
+                                                                    </li>
+                                                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="Admin"
+                                                                                                asp-controller="CourseChanges" asp-action="Index">Course Changes</a></li>
+                                                                    }
+                                                                    @if (User.IsInRole("Student"))
+                                                                    {
+                                                                        <li class="nav-item"><a class="nav-link text-primary fw-semibold" asp-area="Student"
+                                                                                                    asp-controller="Dashboard" asp-action="Index">Student Dashboard</a></li>
+                                                                            <li class="nav-item"><a class="nav-link text-dark" asp-area="Student" asp-controller="Fees"
+                                                                                                        asp-action="Index">My Fees</a></li>
+                                                                                <li class="nav-item"><a class="nav-link text-dark" asp-area="Student" asp-controller="Fees"
+                                                                                                            asp-action="Installments">My Installments</a></li>
+                                                                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="Student"
+                                                                                                                asp-controller="Assignments" asp-action="Index">Assignments</a></li>
+                                                                                        <li class="nav-item"><a class="nav-link text-dark" asp-area="Student" asp-controller="Tests"
+                                                                                                                    asp-action="Index">Tests</a></li>
+                                                                                            <li class="nav-item"><a class="nav-link text-dark" asp-area="Student" asp-controller="Content"
+                                                                                                                        asp-action="Index">Learning</a></li>
+                                                                                                <li class="nav-item"><a class="nav-link text-dark" asp-area="Student" asp-controller="Notices"
+                                                                                                                            asp-action="Index">Notices</a></li>
+                                                                                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="Student" asp-controller="Schedule"
+                                                                                                                                asp-action="Index">Schedule</a></li>
+                                                                                                        <li class="nav-item"><a class="nav-link text-dark" asp-area="Student"
+                                                                                                                                    asp-controller="Challenges" asp-action="Index">Challenges</a></li>
+                                                                                                            <li class="nav-item"><a class="nav-link text-dark" asp-area="Student" asp-controller="Doubts"
+                                                                                                                                        asp-action="Index">Ask Instructor</a></li>
+                                                                                                                <li class="nav-item"><a class="nav-link text-dark" asp-area="Student" asp-controller="Messages"
+                                                                                                                                            asp-action="Index">Messages</a></li>
+                                                                                                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="Student" asp-controller="Badges"
+                                                                                                                                                asp-action="Index">My Badges</a></li>
+                                                                                                                        <li class="nav-item"><a class="nav-link text-dark" asp-area="Student"
+                                                                                                                                                    asp-controller="Certificates" asp-action="Index">Certificates</a></li>
+                                                                                                                            <li class="nav-item"><a class="nav-link text-dark" asp-area="Student" asp-controller="Profile"
+                                                                                                                                                        asp-action="Index">My Profile</a></li>
+                                                                                                                                <li class="nav-item"><a class="nav-link text-dark" asp-area="Student"
+                                                                                                                                                            asp-controller="Enrollments" asp-action="Index">My Courses</a></li>
+                                                                                                                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="Student"
+                                                                                                                                                                asp-controller="CourseChanges" asp-action="Index">Course Changes</a></li>
+                                                                                                                                        <li class="nav-item"><a class="nav-link text-dark" asp-area="Student" asp-controller="Notes"
+                                                                                                                                                                    asp-action="Index">My Notes</a></li>
+                                                                                                                                        }
+                                                                                                                                        @if (User.IsInRole("Faculty"))
+                                                                                                                                        {
+                                                                                                                                            <li class="nav-item"><a class="nav-link text-primary fw-semibold" asp-area="Faculty"
+                                                                                                                                                                        asp-controller="Dashboard" asp-action="Index">Faculty Dashboard</a></li>
+                                                                                                                                                <li class="nav-item"><a class="nav-link text-dark" asp-area="Faculty" asp-controller="Courses"
+                                                                                                                                                                            asp-action="Index">My Courses</a></li>
+                                                                                                                                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="Faculty"
+                                                                                                                                                                                asp-controller="Attendance" asp-action="Index">Attendance</a></li>
+                                                                                                                                                        <li class="nav-item"><a class="nav-link text-dark" asp-area="Faculty"
+                                                                                                                                                                                    asp-controller="Assignments" asp-action="Index">Assignments</a></li>
+                                                                                                                                                            <li class="nav-item"><a class="nav-link text-dark" asp-area="Faculty" asp-controller="Tests"
+                                                                                                                                                                                        asp-action="Index">Tests</a></li>
+                                                                                                                                                                <li class="nav-item"><a class="nav-link text-dark" asp-area="Faculty" asp-controller="Content"
+                                                                                                                                                                                            asp-action="Index">Content</a></li>
+                                                                                                                                                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="Faculty" asp-controller="Notices"
+                                                                                                                                                                                                asp-action="Index">Notices</a></li>
+                                                                                                                                                                        <li class="nav-item"><a class="nav-link text-dark" asp-area="Faculty" asp-controller="Schedule"
+                                                                                                                                                                                                    asp-action="Index">Schedule</a></li>
+                                                                                                                                                                            <li class="nav-item"><a class="nav-link text-dark" asp-area="Faculty"
+                                                                                                                                                                                                        asp-controller="Challenges" asp-action="Index">Challenges</a></li>
+                                                                                                                                                                                <li class="nav-item"><a class="nav-link text-dark" asp-area="Faculty" asp-controller="Doubts"
+                                                                                                                                                                                                            asp-action="Index">Doubts</a></li>
+                                                                                                                                                                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="Faculty" asp-controller="Messages"
+                                                                                                                                                                                                                asp-action="Index">Messages</a></li>
+                                                                                                                                                                                        <li class="nav-item"><a class="nav-link text-dark" asp-area="Faculty" asp-controller="Badges"
+                                                                                                                                                                                                                    asp-action="Index">Badges</a></li>
+                                                                                                                                                                                        }
+                                                                                                                                                                                    </ul>
+                                                                                                                                                                                    <partial name="_LoginPartial" />
+                                                                                                                                                                                </div>
+                                                                                                                                                                            </div>
+                                                                                                                                                                        </nav>
+                                                                                                                                                                    </header>
+                                                                                                                                                                    @if (User.Identity?.IsAuthenticated == true)
+                                                                                                                                                                    {
+                                                                                                                                                                        <button class="sidebar-toggle" type="button" id="sidebarToggle" aria-label="Hide or show sidebar">☰</button>
+                                                                                                                                                                    }
+                                                                                                                                                                    <div class="container">
+                                                                                                                                                                        <main role="main" class="pb-3">
+                                                                                                                                                                            @RenderBody()
+                                                                                                                                                                        </main>
+                                                                                                                                                                    </div>
+
+                                                                                                                                                                    <footer class="border-top footer text-muted">
+                                                                                                                                                                        <div class="container text-center">
+                                                                                                                                                                            &copy; 2026 - TechnifyERP - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                                                                                                                                                        </div>
+                                                                                                                                                                    </footer>
+                                                                                                                                                                    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                                                                                                                                                                    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/english-ui.js" asp-append-version="true"></script>
+                                                                                                                                                                    @await RenderSectionAsync("Scripts", required: false)
+                                                                                                                                                                </body>
+
+                                                                                                                                                            </html>

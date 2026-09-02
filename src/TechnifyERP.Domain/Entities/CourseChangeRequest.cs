@@ -1,0 +1,3 @@
+using TechnifyERP.Domain.Enums;
+namespace TechnifyERP.Domain.Entities;
+public sealed class CourseChangeRequest { public int Id { get; set; } public string StudentUserId { get; set; } = string.Empty; public int FromCourseId { get; set; } public int ToCourseId { get; set; } public string Reason { get; set; } = string.Empty; public CourseChangeStatus Status { get; set; } = CourseChangeStatus.Pending; public string? AdminRemarks { get; set; } public DateTime RequestedAtUtc { get; set; } = DateTime.UtcNow; public DateTime? ReviewedAtUtc { get; set; } public Course FromCourse { get; set; } = null!; public Course ToCourse { get; set; } = null!; }

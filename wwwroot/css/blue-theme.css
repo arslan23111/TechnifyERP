@@ -1,0 +1,114 @@
+:root,
+.role-admin,
+.role-faculty,
+.role-student {
+  --app-primary: #1565d8;
+  --app-primary-dark: #0d47a1;
+  --app-ink: #102a43;
+  --app-muted: #5c6f82;
+  --app-surface: #fff;
+  --app-border: #dbe7f5;
+  --app-bg: #f4f8fd;
+}
+body {
+  margin-bottom: 0 !important;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+}
+body > header {
+  flex: 0 0 auto;
+}
+body > .container {
+  flex: 1 0 auto;
+  width: 100%;
+}
+.app-navbar {
+  background: #fff !important;
+  border-bottom-color: #dbe7f5 !important;
+}
+.nav-link:hover,
+.nav-link.text-primary {
+  background: #eaf3ff !important;
+  color: #1565d8 !important;
+}
+.role-faculty .nav-link:hover,
+.role-faculty .nav-link.text-primary {
+  background: #eaf3ff !important;
+}
+.card {
+  border-color: #dbe7f5 !important;
+  box-shadow: 0 8px 25px rgba(15, 95, 207, 0.07) !important;
+}
+.card-body {
+  padding: 1.5rem;
+}
+.compact-stat-card {
+    min-height: 90px !important;
+}
+
+.compact-stat-card .card-body {
+    padding: 12px 14px !important;
+}
+
+.compact-stat-card .display-6 {
+    font-size: 24px !important;
+}
+
+.compact-stat-card .text-secondary {
+    font-size: 12px !important;
+}
+.table thead th {
+  background: #f7fbff;
+  color: #35628d;
+}
+.form-control,
+.form-select {
+  border-color: #c9ddef;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: #1565d8;
+  box-shadow: 0 0 0 0.2rem rgba(21, 101, 216, 0.14);
+}
+.btn-primary {
+  background: #1565d8;
+  border-color: #1565d8;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background: #0d47a1;
+  border-color: #0d47a1;
+}
+.btn-outline-primary {
+  color: #1565d8;
+  border-color: #1565d8;
+}
+.btn-outline-primary:hover {
+  background: #1565d8;
+  border-color: #1565d8;
+}
+.progress-bar {
+  background: #1565d8;
+}
+.text-primary {
+  color: #1565d8 !important;
+}
+footer {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 100% !important;
+  margin: 0 !important;
+  text-align: center !important;
+  z-index: auto !important;
+  flex: 0 0 auto;
+}
+footer .container {
+  max-width: 1180px !important;
+  width: 100% !important;
+  text-align: center !important;
+}

@@ -1,0 +1,28 @@
+@model TechnifyERP.Application.Admin.StudentDetailsDto
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<div class="d-flex justify-content-between align-items-start mb-4">
+    <div><span class="badge text-bg-primary mb-2">@(Model.RegistrationNumber ?? "Pending")</span><h1 class="h2 mb-1">@Model.FullName</h1><p class="text-secondary mb-0">@Model.Email</p></div>
+    <a asp-action="Index" class="btn btn-outline-secondary">Back</a>
+</div>
+<div class="row g-4">
+    <div class="col-lg-5"><div class="card border-0 shadow-sm h-100"><div class="card-body p-4">
+        <h2 class="h5">Profile</h2><dl class="row mb-0">
+            <dt class="col-5">Phone</dt><dd class="col-7">@(Model.PhoneNumber ?? "—")</dd>
+            <dt class="col-5">CNIC</dt><dd class="col-7">@(Model.Cnic ?? "—")</dd>
+            <dt class="col-5">Gender</dt><dd class="col-7">@(Model.Gender ?? "—")</dd>
+            <dt class="col-5">Date of Birth</dt><dd class="col-7">@(Model.DateOfBirth?.ToString("dd MMM yyyy") ?? "—")</dd>
+            <dt class="col-5">Address</dt><dd class="col-7">@(Model.Address ?? "—")</dd>
+            <dt class="col-5">Status</dt><dd class="col-7">@Model.AccountStatus</dd>
+        </dl>
+    </div></div></div>
+    <div class="col-lg-7"><div class="card border-0 shadow-sm"><div class="card-body p-4">
+        <h2 class="h5">Course Enrollments</h2>
+        @if (Model.Enrollments.Count == 0) { <p class="text-secondary mb-0">No enrollments found.</p> }
+        else { <div class="table-responsive"><table class="table"><thead><tr><th>Course</th><th>Status</th><th>Requested</th></tr></thead><tbody>
+        @foreach (var item in Model.Enrollments) { <tr><td><strong>@item.CourseCode</strong><br /><small>@item.CourseName</small></td><td>@item.Status</td><td>@item.RequestedAtUtc.ToLocalTime().ToString("dd MMM yyyy")</td></tr> }
+        </tbody></table></div> }
+    </div></div></div>
+</div>

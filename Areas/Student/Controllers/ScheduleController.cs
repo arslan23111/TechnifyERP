@@ -1,0 +1,2 @@
+using System.Security.Claims;using Microsoft.AspNetCore.Authorization;using Microsoft.AspNetCore.Mvc;using TechnifyERP.Application.Schedules;
+namespace TechnifyERP.Areas.Student.Controllers;[Area("Student"),Authorize(Roles="Student")]public sealed class ScheduleController(IScheduleService service):Controller{public async Task<IActionResult>Index(CancellationToken ct)=>View(await service.GetStudentScheduleAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)!,ct));}

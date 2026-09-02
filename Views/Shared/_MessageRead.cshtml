@@ -1,0 +1,14 @@
+@using TechnifyERP.Application.Messages
+@model MessageDto
+@{
+    ViewData["Title"] = "Read Message";
+}
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+        <h1 class="h3">@Model.Subject</h1>
+        <div class="text-secondary mb-4">From: @Model.SenderName · To: @Model.RecipientName ·
+            @Model.SentAtUtc.ToLocalTime()</div>
+            <p style="white-space:pre-wrap">@Model.Body</p><a asp-action="Index" class="btn btn-outline-primary">Back to
+            Messages</a>
+        </div>
+    </div>

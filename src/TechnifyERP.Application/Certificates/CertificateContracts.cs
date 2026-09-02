@@ -1,0 +1,5 @@
+namespace TechnifyERP.Application.Certificates;
+public sealed record EligibleCertificateStudentDto(string StudentUserId,string StudentName,string? RegistrationNumber,int CourseId,string CourseCode,string CourseName);
+public sealed record CertificateDto(int Id,string CertificateCode,string StudentName,string? RegistrationNumber,string CourseCode,string CourseName,string IssuedBy,DateOnly IssueDate);
+public enum CertificateActionResult{Success,NotFound,Forbidden,Duplicate}
+public interface ICertificateService{Task<IReadOnlyList<EligibleCertificateStudentDto>>GetEligibleAsync(CancellationToken ct=default);Task<IReadOnlyList<CertificateDto>>GetAllAsync(CancellationToken ct=default);Task<(CertificateActionResult Result,int Id)>IssueAsync(string adminId,string studentId,int courseId,CancellationToken ct=default);Task<IReadOnlyList<CertificateDto>>GetStudentAsync(string studentId,CancellationToken ct=default);Task<CertificateDto?>GetForUserAsync(string userId,int id,bool admin,CancellationToken ct=default);}
