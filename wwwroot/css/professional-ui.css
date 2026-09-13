@@ -1,0 +1,805 @@
+/* Shared professional dashboard styling for Super Admin, Faculty and Student. */
+:root {
+    --erp-navy: #102a43;
+    --erp-blue: #1d6fe9;
+    --erp-blue-soft: #eaf3ff;
+    --erp-page: #f5f8fc;
+    --erp-border: #dce7f3;
+}
+
+body {
+    background: var(--erp-page);
+    color: #162d45;
+}
+
+main {
+    padding-top: 0.6rem;
+    padding-bottom: 2rem;
+}
+
+.card {
+    border: 1px solid var(--erp-border) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 5px 18px rgba(30, 69, 108, 0.06) !important;
+}
+
+.card:hover {
+    box-shadow: 0 10px 24px rgba(30, 69, 108, 0.1) !important;
+}
+
+.table-responsive,
+.table {
+    border-radius: 12px;
+}
+
+.table thead th {
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+    background: #f6f9fd;
+    color: #42617f;
+}
+
+.table td {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    vertical-align: middle;
+}
+
+.btn {
+    min-height: 38px;
+    padding: 0.48rem 0.9rem;
+    border-radius: 8px;
+    box-shadow: none;
+    font-size: 0.86rem;
+    line-height: 1.35;
+}
+
+.btn-primary {
+    background: var(--erp-blue);
+    border-color: var(--erp-blue);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: #1259c4;
+    border-color: #1259c4;
+}
+
+/* Status labels: compact rectangles instead of oversized oval pills. */
+.badge.text-bg-success,
+.badge.text-bg-danger,
+.badge.text-bg-warning,
+.badge.text-bg-secondary,
+.badge.text-bg-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    min-height: 3px;
+    padding: 0.35rem 1.65rem;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: 0.01em;
+}
+
+.dashboard-header {
+    padding: 20px 22px;
+    border: 1px solid var(--erp-border);
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 5px 18px rgba(30, 69, 108, 0.05);
+}
+
+.dashboard-header .h2 {
+    margin-bottom: 4px !important;
+    color: var(--erp-navy);
+    font-size: 1.55rem;
+}
+
+.dashboard-header .btn {
+    min-width: 132px;
+}
+
+.dashboard-header + .row {
+    --bs-gutter-x: 1rem;
+    --bs-gutter-y: 1rem;
+}
+
+.dashboard-kpi {
+    position: relative;
+    min-height: 112px;
+    overflow: hidden;
+}
+
+.dashboard-kpi::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    content: "";
+    background: var(--erp-blue);
+}
+
+.dashboard-kpi .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 17px 20px;
+}
+
+.dashboard-kpi .display-6 {
+    margin-top: 6px;
+    color: var(--erp-navy);
+    font-size: 2rem;
+    line-height: 1;
+}
+
+/* Quick-action buttons on the Faculty and Student dashboards. */
+.dashboard-header ~ .card .d-flex.flex-wrap.gap-2 .btn,
+.dashboard-header ~ section .d-flex.flex-wrap.gap-2 .btn {
+    min-width: 132px;
+    margin: 0;
+}
+
+@media (max-width: 575.98px) {
+    .dashboard-header {
+        padding: 16px;
+    }
+
+    .dashboard-kpi {
+        min-height: 100px;
+    }
+
+    .dashboard-kpi .card-body {
+        padding: 15px;
+    }
+
+    .dashboard-kpi .display-6 {
+        font-size: 1.7rem;
+    }
+
+    .dashboard-header .btn,
+    .dashboard-header ~ .card .d-flex.flex-wrap.gap-2 .btn,
+    .dashboard-header ~ section .d-flex.flex-wrap.gap-2 .btn {
+        width: 100%;
+    }
+}
+
+.dashboard-kpi .text-secondary {
+    color: #647a91 !important;
+    font-size: 0.8rem !important;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+/* Desktop application shell. The public pages retain their clean white header. */
+@media (min-width: 992px) {
+    body.role-admin,
+    body.role-faculty,
+    body.role-student {
+        margin-left: 244px;
+    }
+
+    .role-admin .app-navbar,
+    .role-faculty .app-navbar,
+    .role-student .app-navbar {
+        top: 54px;
+        height: calc(100vh - 54px);
+        width: 244px;
+        padding: 18px 14px;
+        background: #eef2f6 !important;
+        border-right: 1px solid #d6e0ea !important;
+        box-shadow: none;
+    }
+
+    .role-admin .navbar-brand,
+    .role-faculty .navbar-brand,
+    .role-student .navbar-brand {
+        margin: 0 0 14px;
+        padding: 10px 12px 17px;
+        color: var(--erp-navy) !important;
+        font-size: 1.2rem;
+        letter-spacing: -0.6px;
+        border-bottom: 1px solid #d6e0ea;
+    }
+
+    .role-admin .nav-link,
+    .role-faculty .nav-link,
+    .role-student .nav-link,
+    .role-admin .nav-link.text-dark,
+    .role-faculty .nav-link.text-dark,
+    .role-student .nav-link.text-dark {
+        margin: 2px 0;
+        padding: 9px 12px !important;
+        color: #243b53 !important;
+        font-size: 0.86rem !important;
+        font-weight: 600 !important;
+        border-radius: 8px;
+    }
+
+    .role-admin .nav-link:hover,
+    .role-faculty .nav-link:hover,
+    .role-student .nav-link:hover,
+    .role-admin .nav-link.text-primary,
+    .role-faculty .nav-link.text-primary,
+    .role-student .nav-link.text-primary {
+        background: #dcecff !important;
+        color: #0c56c3 !important;
+    }
+
+    .role-admin .nav-link.sidebar-active,
+    .role-faculty .nav-link.sidebar-active,
+    .role-student .nav-link.sidebar-active {
+        background: #cfe4ff !important;
+        color: #0b55c2 !important;
+        box-shadow: inset 3px 0 0 #1d6fe9;
+    }
+
+    .role-admin .navbar-collapse > ul:last-of-type,
+    .role-faculty .navbar-collapse > ul:last-of-type,
+    .role-student .navbar-collapse > ul:last-of-type {
+        margin-top: 16px;
+        padding-top: 12px;
+        border-top-color: #d6e0ea;
+    }
+
+    .workspace-topbar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 54px;
+        padding: 0 28px;
+        color: #ffffff;
+        background: var(--erp-navy);
+        box-shadow: 0 2px 8px rgba(15, 36, 59, 0.16);
+    }
+
+    .workspace-title {
+        font-size: 1.05rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+    }
+
+    .workspace-role {
+        color: #d7e5f3;
+        font-size: 0.83rem;
+        font-weight: 600;
+    }
+
+    body.role-admin > .container,
+    body.role-faculty > .container,
+    body.role-student > .container {
+        padding-top: 6px;
+    }
+
+    #sidebarToggle {
+        top: 65px !important;
+        left: 198px !important;
+        width: 32px;
+        height: 32px;
+        color: var(--erp-blue);
+        background: #ffffff;
+        box-shadow: none;
+    }
+
+    #sidebarToggle:hover {
+        color: #ffffff;
+        background: var(--erp-blue);
+    }
+
+    body.sidebar-collapsed #sidebarToggle {
+        top: 10px !important;
+        left: 14px !important;
+        color: #ffffff;
+        background: var(--erp-blue);
+        box-shadow: 0 4px 12px rgba(20, 48, 79, 0.14);
+    }
+
+    body.sidebar-collapsed .workspace-topbar {
+        padding-left: 62px;
+    }
+
+    body.role-admin > footer,
+    body.role-faculty > footer,
+    body.role-student > footer {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .app-navbar {
+        background: #ffffff !important;
+    }
+
+    .workspace-topbar {
+        display: none;
+    }
+}
+
+/* Olive academic portal theme, shared by Admin, Faculty and Student areas. */
+body.role-admin,
+body.role-faculty,
+body.role-student {
+    --app-primary: #536d1f;
+    --app-primary-dark: #3d5215;
+    --app-ink: #182900;
+    --app-muted: #5e7040;
+    --app-border: #d6e1b8;
+    --app-bg: #fbfaef;
+}
+
+@media (min-width: 992px) {
+    body.role-admin,
+    body.role-faculty,
+    body.role-student {
+        margin-left: 260px;
+        background: #fbfaef;
+    }
+
+    .role-admin .app-navbar,
+    .role-faculty .app-navbar,
+    .role-student .app-navbar {
+        top: 8px;
+        left: 8px;
+        width: 236px;
+        height: calc(100vh - 16px);
+        padding: 16px 12px;
+        background: #182900 !important;
+        border: 0 !important;
+        border-radius: 9px;
+        box-shadow: none;
+    }
+
+    .role-admin .navbar-brand,
+    .role-faculty .navbar-brand,
+    .role-student .navbar-brand {
+        margin: 0 0 16px;
+        padding: 4px 10px 16px;
+        color: #ffffff !important;
+        border-bottom-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .role-admin .nav-link,
+    .role-faculty .nav-link,
+    .role-student .nav-link,
+    .role-admin .nav-link.text-dark,
+    .role-faculty .nav-link.text-dark,
+    .role-student .nav-link.text-dark {
+        margin: 2px 0;
+        padding: 9px 11px !important;
+        color: #eef4dc !important;
+        border-radius: 7px;
+    }
+
+    .role-admin .nav-link:hover,
+    .role-faculty .nav-link:hover,
+    .role-student .nav-link:hover {
+        background: rgba(238, 244, 220, 0.14) !important;
+        color: #ffffff !important;
+    }
+
+    .role-admin .nav-link.sidebar-active,
+    .role-faculty .nav-link.sidebar-active,
+    .role-student .nav-link.sidebar-active,
+    .role-admin .nav-link.text-primary,
+    .role-faculty .nav-link.text-primary,
+    .role-student .nav-link.text-primary {
+        background: #ecf1df !important;
+        color: #182900 !important;
+        box-shadow: none;
+    }
+
+    .role-admin .navbar-collapse > ul:last-of-type,
+    .role-faculty .navbar-collapse > ul:last-of-type,
+    .role-student .navbar-collapse > ul:last-of-type {
+        border-top-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .workspace-topbar {
+        display: none;
+    }
+
+    body.role-admin > .container,
+    body.role-faculty > .container,
+    body.role-student > .container {
+        padding-top: 18px;
+    }
+
+    #sidebarToggle {
+        top: 21px !important;
+        left: 191px !important;
+        color: #182900;
+        background: #ecf1df;
+        border-radius: 7px;
+    }
+
+    #sidebarToggle:hover {
+        color: #ffffff;
+        background: #4f641d;
+    }
+
+    body.sidebar-collapsed #sidebarToggle {
+        top: 14px !important;
+        left: 14px !important;
+        color: #ffffff;
+        background: #182900;
+    }
+}
+
+body.role-admin .container,
+body.role-faculty .container,
+body.role-student .container {
+    
+    max-width: 1280px;
+}
+
+body.role-admin .card,
+body.role-faculty .card,
+body.role-student .card {
+    border-color: #d6e1b8 !important;
+    background: #e6efc7;
+    box-shadow: none !important;
+}
+
+body.role-admin .card:hover,
+body.role-faculty .card:hover,
+body.role-student .card:hover {
+    box-shadow: 0 4px 12px rgba(37, 55, 9, 0.08) !important;
+}
+
+body.role-admin .dashboard-header,
+body.role-faculty .dashboard-header,
+body.role-student .dashboard-header {
+    border-color: #d6e1b8;
+    background: #ffffff;
+    box-shadow: none;
+}
+
+body.role-admin .dashboard-header .h2,
+body.role-faculty .dashboard-header .h2,
+body.role-student .dashboard-header .h2 {
+    color: #182900;
+}
+
+/* Homepage hero stays readable when an authenticated user opens Home. */
+body.role-admin main .bg-primary h1,
+body.role-faculty main .bg-primary h1,
+body.role-student main .bg-primary h1 {
+    color: #fffef6 !important;
+}
+
+body.role-admin main .bg-primary .text-white-50,
+body.role-faculty main .bg-primary .text-white-50,
+body.role-student main .bg-primary .text-white-50 {
+    color: #dce9b9 !important;
+}
+
+body.role-admin .dashboard-kpi,
+body.role-faculty .dashboard-kpi,
+body.role-student .dashboard-kpi {
+    background: #dceab8;
+}
+
+body.role-admin .dashboard-kpi::after,
+body.role-faculty .dashboard-kpi::after,
+body.role-student .dashboard-kpi::after {
+    background: #536d1f;
+}
+
+body.role-admin .dashboard-kpi .display-6,
+body.role-faculty .dashboard-kpi .display-6,
+body.role-student .dashboard-kpi .display-6 {
+    color: #182900;
+}
+
+body.role-admin .btn-primary,
+body.role-faculty .btn-primary,
+body.role-student .btn-primary {
+    background: #182900;
+    border-color: #182900;
+}
+
+body.role-admin .btn-primary:hover,
+body.role-faculty .btn-primary:hover,
+body.role-student .btn-primary:hover {
+    background: #4f641d;
+    border-color: #4f641d;
+}
+
+body.role-admin .btn-outline-primary,
+body.role-faculty .btn-outline-primary,
+body.role-student .btn-outline-primary {
+    color: #182900;
+    border-color: #536d1f;
+    background: #f9fbed;
+}
+
+body.role-admin .btn-outline-primary:hover,
+body.role-faculty .btn-outline-primary:hover,
+body.role-student .btn-outline-primary:hover {
+    color: #ffffff;
+    border-color: #182900;
+    background: #182900;
+}
+
+body.role-admin .table thead th,
+body.role-faculty .table thead th,
+body.role-student .table thead th {
+    background: #dceab8;
+    color: #31420c;
+}
+
+body.role-admin .form-control,
+body.role-admin .form-select,
+body.role-faculty .form-control,
+body.role-faculty .form-select,
+body.role-student .form-control,
+body.role-student .form-select {
+    border-color: #c4d69b;
+    background: #ffffff;
+}
+
+body.role-admin .form-control:focus,
+body.role-admin .form-select:focus,
+body.role-faculty .form-control:focus,
+body.role-faculty .form-select:focus,
+body.role-student .form-control:focus,
+body.role-student .form-select:focus {
+    border-color: #536d1f;
+    box-shadow: 0 0 0 0.2rem rgba(83, 109, 31, 0.16);
+}
+
+body.role-admin .progress-bar,
+body.role-faculty .progress-bar,
+body.role-student .progress-bar {
+    background: #536d1f;
+}
+
+/* Replace Bootstrap's default blue across every authenticated module. */
+body.role-admin .bg-primary,
+body.role-faculty .bg-primary,
+body.role-student .bg-primary {
+    background-color: #182900 !important;
+}
+
+body.role-admin .text-primary,
+body.role-faculty .text-primary,
+body.role-student .text-primary {
+    color: #405811 !important;
+}
+
+body.role-admin .border-primary,
+body.role-faculty .border-primary,
+body.role-student .border-primary {
+    border-color: #536d1f !important;
+}
+
+body.role-admin .link-primary,
+body.role-faculty .link-primary,
+body.role-student .link-primary,
+body.role-admin main a:not(.btn):not(.nav-link),
+body.role-faculty main a:not(.btn):not(.nav-link),
+body.role-student main a:not(.btn):not(.nav-link) {
+    color: #405811;
+}
+
+body.role-admin main a:not(.btn):not(.nav-link):hover,
+body.role-faculty main a:not(.btn):not(.nav-link):hover,
+body.role-student main a:not(.btn):not(.nav-link):hover {
+    color: #182900;
+}
+
+body.role-admin .text-bg-primary,
+body.role-faculty .text-bg-primary,
+body.role-student .text-bg-primary {
+    color: #ffffff !important;
+    background-color: #405811 !important;
+}
+
+body.role-admin .bg-info,
+body.role-faculty .bg-info,
+body.role-student .bg-info,
+body.role-admin .alert-info,
+body.role-faculty .alert-info,
+body.role-student .alert-info {
+    color: #263b08 !important;
+    background-color: #eaf1d4 !important;
+    border-color: #c7d9a0 !important;
+}
+
+body.role-admin .text-info,
+body.role-faculty .text-info,
+body.role-student .text-info {
+    color: #536d1f !important;
+}
+
+body.role-admin .btn-info,
+body.role-faculty .btn-info,
+body.role-student .btn-info {
+    color: #ffffff;
+    background: #536d1f;
+    border-color: #536d1f;
+}
+
+body.role-admin .btn-outline-info,
+body.role-faculty .btn-outline-info,
+body.role-student .btn-outline-info {
+    color: #405811;
+    border-color: #71883a;
+    background: #f9fbed;
+}
+
+body.role-admin .btn-outline-info:hover,
+body.role-faculty .btn-outline-info:hover,
+body.role-student .btn-outline-info:hover {
+    color: #ffffff;
+    background: #536d1f;
+    border-color: #536d1f;
+}
+
+body.role-admin .badge.text-bg-success,
+body.role-faculty .badge.text-bg-success,
+body.role-student .badge.text-bg-success {
+    background-color: #536d1f !important;
+}
+
+body.role-admin .list-group-item-primary,
+body.role-faculty .list-group-item-primary,
+body.role-student .list-group-item-primary {
+    color: #263b08;
+    background-color: #e5f0c6;
+    border-color: #c7d9a0;
+}
+
+body.role-admin input[type="checkbox"],
+body.role-admin input[type="radio"],
+body.role-faculty input[type="checkbox"],
+body.role-faculty input[type="radio"],
+body.role-student input[type="checkbox"],
+body.role-student input[type="radio"] {
+    accent-color: #536d1f;
+}
+
+/* Consistent page rhythm for the remaining module views. */
+body.role-admin main .row,
+body.role-faculty main .row,
+body.role-student main .row {
+    --bs-gutter-x: 1rem;
+    --bs-gutter-y: 1rem;
+}
+
+body.role-admin main > .card + .card,
+body.role-faculty main > .card + .card,
+body.role-student main > .card + .card {
+    margin-top: 1rem;
+}
+
+body.role-admin main .card.mb-2,
+body.role-faculty main .card.mb-2,
+body.role-student main .card.mb-2,
+body.role-admin main .card.mb-3,
+body.role-faculty main .card.mb-3,
+body.role-student main .card.mb-3,
+body.role-admin main .card.mb-4,
+body.role-faculty main .card.mb-4,
+body.role-student main .card.mb-4 {
+    margin-bottom: 1rem !important;
+}
+
+body.role-admin .card-body,
+body.role-faculty .card-body,
+body.role-student .card-body {
+    padding: 1.15rem;
+}
+
+body.role-admin .card-body.p-4,
+body.role-faculty .card-body.p-4,
+body.role-student .card-body.p-4 {
+    padding: 1.25rem !important;
+}
+
+body.role-admin .btn-sm,
+body.role-faculty .btn-sm,
+body.role-student .btn-sm {
+    min-height: 32px;
+    padding: 0.32rem 0.62rem;
+    border-radius: 7px;
+    font-size: 0.76rem;
+}
+
+body.role-admin .btn-outline-secondary,
+body.role-faculty .btn-outline-secondary,
+body.role-student .btn-outline-secondary {
+    color: #405811;
+    border-color: #9bae75;
+    background: #f9fbed;
+}
+
+body.role-admin .btn-outline-secondary:hover,
+body.role-faculty .btn-outline-secondary:hover,
+body.role-student .btn-outline-secondary:hover {
+    color: #ffffff;
+    border-color: #536d1f;
+    background: #536d1f;
+}
+
+body.role-admin .btn-success,
+body.role-faculty .btn-success,
+body.role-student .btn-success {
+    background: #536d1f;
+    border-color: #536d1f;
+}
+
+body.role-admin .btn-danger,
+body.role-faculty .btn-danger,
+body.role-student .btn-danger {
+    background: #9e2b25;
+    border-color: #9e2b25;
+}
+
+body.role-admin .bg-light,
+body.role-faculty .bg-light,
+body.role-student .bg-light {
+    background: #f7faeb !important;
+}
+
+body.role-admin .alert,
+body.role-faculty .alert,
+body.role-student .alert {
+    border: 1px solid #d3dfb3;
+    box-shadow: none;
+}
+
+body.role-admin .alert-success,
+body.role-faculty .alert-success,
+body.role-student .alert-success {
+    color: #2e4705;
+    background: #e7f2ca;
+    border-color: #c8db9b;
+}
+
+body.role-admin .list-group-item,
+body.role-faculty .list-group-item,
+body.role-student .list-group-item {
+    border-color: #d5e0b5;
+    background: transparent;
+}
+
+body.role-admin .table > tbody > tr:hover,
+body.role-faculty .table > tbody > tr:hover,
+body.role-student .table > tbody > tr:hover {
+    background: rgba(255, 255, 255, 0.45);
+}
+
+body.role-admin .table td,
+body.role-faculty .table td,
+body.role-student .table td {
+    border-color: #d5e0b5;
+}
+
+body.role-admin .form-control,
+body.role-admin .form-select,
+body.role-faculty .form-control,
+body.role-faculty .form-select,
+body.role-student .form-control,
+body.role-student .form-select {
+    min-height: 39px;
+    border-radius: 8px;
+}
+
+@media (max-width: 767.98px) {
+    body.role-admin main .d-flex.gap-2,
+    body.role-faculty main .d-flex.gap-2,
+    body.role-student main .d-flex.gap-2 {
+        flex-wrap: wrap;
+    }
+}

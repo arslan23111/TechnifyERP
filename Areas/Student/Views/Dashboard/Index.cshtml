@@ -3,7 +3,7 @@
     ViewData["Title"] = "Student Dashboard";
 }
 
-<div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+<div class="dashboard-header d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
     <div>
         <span class="text-primary fw-semibold">TECHNIFY ERP</span>
         <h1 class="h2 mb-1">Student Dashboard</h1>
@@ -13,12 +13,12 @@
 </div>
 
 <div class="row g-3 mb-4">
-    <div class="col-6 col-lg-4"><div class="card h-100 border-0 shadow-sm"><div class="card-body"><div class="text-secondary small">Approved Courses</div><div class="display-6">@Model.Dashboard.ApprovedCourses</div></div></div></div>
-    <div class="col-6 col-lg-4"><div class="card h-100 border-0 shadow-sm"><div class="card-body"><div class="text-secondary small">Attendance Logs</div><div class="display-6">@Model.Dashboard.AttendanceLogs</div></div></div></div>
-    <div class="col-6 col-lg-4"><div class="card h-100 border-0 shadow-sm"><div class="card-body"><div class="text-secondary small">Pending Assignments</div><div class="display-6 text-warning-emphasis">@Model.Dashboard.PendingAssignments</div></div></div></div>
-    <div class="col-6 col-lg-4"><div class="card h-100 border-0 shadow-sm"><div class="card-body"><div class="text-secondary small">Upcoming Tests</div><div class="display-6 text-primary">@Model.Dashboard.UpcomingTests</div></div></div></div>
-    <div class="col-6 col-lg-4"><div class="card h-100 border-0 shadow-sm"><div class="card-body"><div class="text-secondary small">Recent Notices</div><div class="display-6">@Model.Dashboard.UnreadNotices</div></div></div></div>
-    <div class="col-6 col-lg-4"><div class="card h-100 border-0 shadow-sm"><div class="card-body"><div class="text-secondary small">Earned Badges</div><div class="display-6 text-success">@Model.Dashboard.EarnedBadges</div></div></div></div>
+    <div class="col-6 col-lg-4"><div class="card dashboard-kpi h-100 border-0 shadow-sm"><div class="card-body"><div class="text-secondary small">Approved Courses</div><div class="display-6">@Model.Dashboard.ApprovedCourses</div></div></div></div>
+    <div class="col-6 col-lg-4"><div class="card dashboard-kpi h-100 border-0 shadow-sm"><div class="card-body"><div class="text-secondary small">Attendance Logs</div><div class="display-6">@Model.Dashboard.AttendanceLogs</div></div></div></div>
+    <div class="col-6 col-lg-4"><div class="card dashboard-kpi h-100 border-0 shadow-sm"><div class="card-body"><div class="text-secondary small">Pending Assignments</div><div class="display-6 emphasis">@Model.Dashboard.PendingAssignments</div></div></div></div>
+    <div class="col-6 col-lg-4"><div class="card dashboard-kpi h-100 border-0 shadow-sm"><div class="card-body"><div class="text-secondary small">Upcoming Tests</div><div class="display-6">@Model.Dashboard.UpcomingTests</div></div></div></div>
+    <div class="col-6 col-lg-4"><div class="card dashboard-kpi h-100 border-0 shadow-sm"><div class="card-body"><div class="text-secondary small">Recent Notices</div><div class="display-6">@Model.Dashboard.UnreadNotices</div></div></div></div>
+    <div class="col-6 col-lg-4"><div class="card dashboard-kpi h-100 border-0 shadow-sm"><div class="card-body"><div class="text-secondary small">Earned Badges</div><div class="display-6">@Model.Dashboard.EarnedBadges</div></div></div></div>
 </div>
 
 <div class="row g-4 mb-4">

@@ -3,7 +3,7 @@
     ViewData["Title"] = "Super Admin Dashboard";
 }
 
-<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4 mt-3">
+<div class="dashboard-header d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4 mt-3">
     <div>
         <p class="text-primary fw-semibold mb-1">TECHNIFY ERP</p>
         <h1 class="h2 mb-1">Super Admin Dashboard</h1>
@@ -14,7 +14,7 @@
 
 <div class="row g-3 mb-4">
     <div class="col-sm-6 col-xl-3">
-        <div class="card h-100 shadow-sm border-0">
+        <div class="card dashboard-kpi h-100 shadow-sm border-0">
             <div class="card-body">
                 <p class="text-secondary mb-2">Students</p>
                 <h2 class="display-6 fw-semibold mb-0">@Model.ActiveStudents</h2>
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="col-sm-6 col-xl-3">
-        <div class="card h-100 shadow-sm border-0">
+        <div class="card dashboard-kpi h-100 shadow-sm border-0">
             <div class="card-body">
                 <p class="text-secondary mb-2">Faculty</p>
                 <h2 class="display-6 fw-semibold mb-0">@Model.ActiveFaculty</h2>
@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="col-sm-6 col-xl-3">
-        <div class="card h-100 shadow-sm border-0">
+        <div class="card dashboard-kpi h-100 shadow-sm border-0">
             <div class="card-body">
                 <p class="text-secondary mb-2">Active Courses</p>
                 <h2 class="display-6 fw-semibold mb-0">@Model.Courses</h2>
@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="col-sm-6 col-xl-3">
-        <div class="card h-100 shadow-sm border-0">
+        <div class="card dashboard-kpi h-100 shadow-sm border-0">
             <div class="card-body">
                 <p class="text-secondary mb-2">Pending Approvals</p>
                 <h2 class="display-6 fw-semibold mb-0">@Model.PendingApprovals</h2>

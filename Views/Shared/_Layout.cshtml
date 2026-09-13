@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/blue-theme.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/homepage-cards.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/professional-ui.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TechnifyERP.styles.css" asp-append-version="true" />
 </head>
 
@@ -156,6 +157,13 @@
                                                                                                                                                                             </div>
                                                                                                                                                                         </nav>
                                                                                                                                                                     </header>
+                                                                                                                                                                    @if (User.Identity?.IsAuthenticated == true)
+                                                                                                                                                                    {
+                                                                                                                                                                        <div class="workspace-topbar">
+                                                                                                                                                                            <span class="workspace-title">TechnifyERP</span>
+                                                                                                                                                                            <span class="workspace-role">@(User.IsInRole("SuperAdmin") ? "Super Admin" : User.IsInRole("Faculty") ? "Faculty" : "Student") Portal</span>
+                                                                                                                                                                        </div>
+                                                                                                                                                                    }
                                                                                                                                                                     @if (User.Identity?.IsAuthenticated == true)
                                                                                                                                                                     {
                                                                                                                                                                         <button class="sidebar-toggle" type="button" id="sidebarToggle" aria-label="Hide or show sidebar">☰</button>

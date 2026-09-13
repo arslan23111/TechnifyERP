@@ -1,0 +1,14 @@
+# .NET build output
+**/bin/
+**/obj/
+
+# Visual Studio / VS Code user files
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Local development secrets and database files
+appsettings.Local.json
+*.mdf
+*.ldf
